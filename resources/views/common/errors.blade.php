@@ -1,6 +1,6 @@
 @if (count($errors) > 0)
     <div class="alert alert-danger">
-        <strong>{{ trans('messages.whoops') }}</strong>
+        <strong>@lang('messages.whoops')</strong>
 
         <br><br>
 

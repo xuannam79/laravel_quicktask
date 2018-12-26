@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AddTasksRequest;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
@@ -14,6 +16,25 @@ class TaskController extends Controller
 	 */
 	public function index(Request $request)
 	{
-	    return view('tasks.index');
+		$displayTasks = Task::orderBy('created_at','ASC')->get();
+	    return view('tasks.index', compact('displayTasks'));
+	}
+	/**
+	 * Display a list of all of the user's task.
+	 *
+	 * @param  Request  $request
+	 * @return Response
+	 */
+	public function store(AddTasksRequest $request)
+	{
+		$task = new Task;
+		$task->name = $request->name;
+		$resultAdd = $task->save();
+
+		if($resultAdd) {
+			return redirect()->route('tasks.index')->with('msg', trans('messages.msgAddSuccess'));
+		} else {
+			return redirect()->route('tasks.index')->with('msg', trans('messages.msgAddFail'));
+		}
 	}
 }
