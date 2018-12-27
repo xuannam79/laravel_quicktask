@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getlocale() }}">
     <head>
-        <title>{{ trans('messages.task') }}</title>
+        <title>@lang('messages.task')</title>
         {{ Html::style('/css/app.css') }}
     </head>
 

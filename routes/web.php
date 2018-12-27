@@ -19,3 +19,7 @@ Route::get('/tasks',[
 	'uses' => 'TaskController@index',
 	'as' => 'tasks.index'
 ]);
+Route::post('/tasks',[
+	'uses' => 'TaskController@store',
+	'as' => 'tasks.index'
+]);

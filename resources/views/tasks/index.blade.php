@@ -3,9 +3,14 @@
 @section('content')
 
     <div class="panel-body">
+        @if(session()->has('msg'))
+            <div class="alert alert-success">
+                {{ session()->get('msg') }}
+            </div>
+        @endif
         @include('common.errors')
 
-        {!! Form::open(['route'=>'tasks.index', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
+        {!! Form::open(['routes'=>'tasks.index', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
         	<div class="form-group">
         		{!! Form::label('task-name', trans('messages.task'), ['class'=>'col-sm-3 control-label']) !!}
         		<div class="col-sm-6">
@@ -18,7 +23,37 @@
         		</div>
         	</div>
         {!! Form::close() !!}
+    
+        @if (count($displayTasks) > 0)
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @lang('messages.currentTasks')
+                </div>
 
+                <div class="panel-body">
+                    <table class="table table-striped task-table">
+
+                        <thead>
+                            <th>@lang('messages.task')</th>
+                            <th>&nbsp;</th>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($displayTasks as $task)
+                                <tr>
+                                    <td class="table-text">
+                                        <div>{{ $task->name }}</div>
+                                    </td>
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        @endif 
     </div>
 
 @endsection
