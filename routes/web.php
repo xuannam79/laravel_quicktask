@@ -23,3 +23,7 @@ Route::post('/tasks',[
 	'uses' => 'TaskController@store',
 	'as' => 'tasks.index'
 ]);
+Route::delete('/tasks/{id}',[
+	'uses' => 'TaskController@destroy',
+	'as' => 'tasks.delete'
+]);

@@ -16,7 +16,7 @@ class TaskController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		$displayTasks = Task::orderBy('created_at','ASC')->get();
+		$displayTasks = Task::orderBy('created_at','DESC')->get();
 	    return view('tasks.index', compact('displayTasks'));
 	}
 	/**
@@ -35,6 +35,17 @@ class TaskController extends Controller
 			return redirect()->route('tasks.index')->with('msg', trans('messages.msgAddSuccess'));
 		} else {
 			return redirect()->route('tasks.index')->with('msg', trans('messages.msgAddFail'));
+		}
+	}
+	public function destroy($id)
+	{
+		$task = Task::find($id);
+		$resultDel = $task->delete($id);
+
+		if($resultDel) {
+			return redirect()->route('tasks.index')->with('msg', trans('messages.msgDelTaskSuccess'));
+		} else {
+			return redirect()->route('tasks.index')->with('msg', trans('messages.msgDelTaskFail'));
 		}
 	}
 }

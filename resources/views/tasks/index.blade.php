@@ -10,7 +10,7 @@
         @endif
         @include('common.errors')
 
-        {!! Form::open(['routes'=>'tasks.index', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
+        {!! Form::open(['route'=>'tasks.index', 'method'=>'POST', 'class'=>'form-horizontal']) !!}
         	<div class="form-group">
         		{!! Form::label('task-name', trans('messages.task'), ['class'=>'col-sm-3 control-label']) !!}
         		<div class="col-sm-6">
@@ -46,6 +46,9 @@
                                     </td>
 
                                     <td>
+                                        {!! Form::open(['route'=>['tasks.delete', $task->id], 'method'=>'DELETE']) !!}
+                                            {!! Form::submit(trans('messages.btn_delete'), ['class'=>'btn btn-danger', 'data-confirm' => trans('messages.confirmDelete')]) !!}
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                             @endforeach

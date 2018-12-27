@@ -8,4 +8,8 @@ return [
     'msgAddSuccess' => 'Add Task Success',
     'msgAddFail' => 'Add Task Fail',
     'currentTasks' => 'Current Tasks',
+    'btn_delete' => 'Delete',
+    'confirmDelete' => 'Are you sure you delete it?',
+    'msgDelTaskSuccess' => 'Delete success',
+    'msgDelTaskFail' => 'Delete fail',
 ];
