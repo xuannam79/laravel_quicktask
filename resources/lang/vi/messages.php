@@ -8,4 +8,8 @@ return [
     'msgAddSuccess' => 'Thêm thành công',
     'msgAddFail' => 'Thêm không thành công',
     'currentTasks' => 'Công việc hiện tại',
+    'btn_delete' => 'Xóa',
+    'confirmDelete' => 'Bạn có chắc là xóa?',
+    'msgDelTaskSuccess' => 'Xóa thành công',
+    'msgDelTaskFail' => 'Xóa không thành công',
 ];
